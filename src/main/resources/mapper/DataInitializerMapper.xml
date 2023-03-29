@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="im.rubric.codetest.config.DataInitializer">
+    <insert id="initialize">
+        INSERT INTO member(created_at, username, password, nickname) values('2023-01-01 03:12:00', 'tester', '1234', '사용자A');
+        INSERT INTO member(created_at, username, password, nickname) values('2023-01-01 03:12:00', 'member1', '1234', '사용자B');
+        INSERT INTO member(created_at, username, password, nickname) values('2023-01-01 03:12:00', 'member2', '1234', '사용자C');
+        INSERT INTO member(created_at, username, password, nickname) values('2023-01-01 03:12:00', 'member3', '1234', '사용자D');
+        INSERT INTO member(created_at, username, password, nickname) values('2023-01-01 03:12:00', 'member4', '1234', '사용자E');
+        INSERT INTO member(created_at, username, password, nickname) values('2023-01-01 03:12:00', 'member5', '1234', '사용자F');
+
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-29 10:10:00', 1, '국회에서 의결된 법률', '제1항의 해임건의는 국회재적의원 3분의 1 이상의 발의에 의하여 국회재적의원 과반수의 찬성이 있어야 한다. 모든 국민은 종교의 자유를 가진다. 대통령의 국법상 행위는 문서로써 하며, 이 문서에는 국무총리와 관계 국무위원이 부서한다. 군사에 관한 것도 또한 같다.', 15, 28);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-25 13:22:00', 2, '모든 국민은 법 앞에', '의원을 제명하려면 국회재적의원 3분의 2 이상의 찬성이 있어야 한다. 국가안전보장회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다.', 6, 30);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-22 14:43:00', 3, '국무총리·국무위원', '행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이 스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다.', 7, 38);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-20 09:12:00', 4, '국회는 법률에 저촉', '훈장등의 영전은 이를 받은 자에게만 효력이 있고, 어떠한 특권도 이에 따르지 아니한다. 국가는 여자의 복지와 권익의 향상을 위하여 노력하여야 한다.', 0, 17);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-19 18:38:00', 5, '탄핵결정은 공직으로', '사법권은 법관으로 구성된 법원에 속한다. 외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 국가안전보장회의는 대통령이 주재한다.', 4, 29);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-14 10:35:00', 6, '국가는 과학기술의 혁', '대통령은 법률에서 구체적으로 범위를 정하여 위임받은 사항과 법률을 집행하기 위하여 필요한 사항에 관하여 대통령령을 발할 수 있다. 국민의 자유와 권리는 헌법에 열거되지 아니한 이유로 경시되지 아니한다.', 18, 79);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-13 12:53:00', 1, '국가는 법률이 정하는', '모든 국민은 거주·이전의 자유를 가진다. 행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 대통령이 제1항의 기간내에 공포나 재의의 요구를 하지 아니한 때에도 그 법률안은 법률로서 확정된다.', 15, 152);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-12 10:10:00', 1, '국회에서 의결된 법률 - 1', '제1항의 해임건의는 국회재적의원 3분의 1 이상의 발의에 의하여 국회재적의원 과반수의 찬성이 있어야 한다. 모든 국민은 종교의 자유를 가진다. 대통령의 국법상 행위는 문서로써 하며, 이 문서에는 국무총리와 관계 국무위원이 부서한다. 군사에 관한 것도 또한 같다.', 15, 28);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-10 13:22:00', 2, '모든 국민은 법 앞에 - 1', '의원을 제명하려면 국회재적의원 3분의 2 이상의 찬성이 있어야 한다. 국가안전보장회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다.', 6, 30);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-08 14:43:00', 3, '국무총리·국무위원 - 1', '행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이 스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다.', 7, 38);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-06 09:12:00', 4, '국회는 법률에 저촉 - 1', '훈장등의 영전은 이를 받은 자에게만 효력이 있고, 어떠한 특권도 이에 따르지 아니한다. 국가는 여자의 복지와 권익의 향상을 위하여 노력하여야 한다.', 0, 17);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-05 18:38:00', 5, '탄핵결정은 공직으로 - 1', '사법권은 법관으로 구성된 법원에 속한다. 외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 국가안전보장회의는 대통령이 주재한다.', 5, 229);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-04 10:35:00', 6, '국가는 과학기술의 혁 - 1', '대통령은 법률에서 구체적으로 범위를 정하여 위임받은 사항과 법률을 집행하기 위하여 필요한 사항에 관하여 대통령령을 발할 수 있다. 국민의 자유와 권리는 헌법에 열거되지 아니한 이유로 경시되지 아니한다.', 148, 729);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-03 12:53:00', 1, '국가는 법률이 정하는 - 1', '모든 국민은 거주·이전의 자유를 가진다. 행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 대통령이 제1항의 기간내에 공포나 재의의 요구를 하지 아니한 때에도 그 법률안은 법률로서 확정된다.', 115, 1522);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-02 10:10:00', 1, '국회에서 의결된 법률 - 2', '제1항의 해임건의는 국회재적의원 3분의 1 이상의 발의에 의하여 국회재적의원 과반수의 찬성이 있어야 한다. 모든 국민은 종교의 자유를 가진다. 대통령의 국법상 행위는 문서로써 하며, 이 문서에는 국무총리와 관계 국무위원이 부서한다. 군사에 관한 것도 또한 같다.', 125, 2348);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-03-01 13:22:00', 2, '모든 국민은 법 앞에 - 2', '의원을 제명하려면 국회재적의원 3분의 2 이상의 찬성이 있어야 한다. 국가안전보장회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다.', 61, 3230);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-23 14:43:00', 3, '국무총리·국무위원 - 2', '행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이 스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다.', 7, 38);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-22 09:12:00', 4, '국회는 법률에 저촉 - 2', '훈장등의 영전은 이를 받은 자에게만 효력이 있고, 어떠한 특권도 이에 따르지 아니한다. 국가는 여자의 복지와 권익의 향상을 위하여 노력하여야 한다.', 1, 7);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-21 18:38:00', 5, '탄핵결정은 공직으로 - 2', '사법권은 법관으로 구성된 법원에 속한다. 외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 국가안전보장회의는 대통령이 주재한다.', 4, 29);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-20 10:35:00', 6, '국가는 과학기술의 혁 - 2', '대통령은 법률에서 구체적으로 범위를 정하여 위임받은 사항과 법률을 집행하기 위하여 필요한 사항에 관하여 대통령령을 발할 수 있다. 국민의 자유와 권리는 헌법에 열거되지 아니한 이유로 경시되지 아니한다.', 8, 9);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-19 12:53:00', 1, '국가는 법률이 정하는 - 2', '모든 국민은 거주·이전의 자유를 가진다. 행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 대통령이 제1항의 기간내에 공포나 재의의 요구를 하지 아니한 때에도 그 법률안은 법률로서 확정된다.', 12, 159);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-16 10:10:00', 1, '국회에서 의결된 법률 - 3', '제1항의 해임건의는 국회재적의원 3분의 1 이상의 발의에 의하여 국회재적의원 과반수의 찬성이 있어야 한다. 모든 국민은 종교의 자유를 가진다. 대통령의 국법상 행위는 문서로써 하며, 이 문서에는 국무총리와 관계 국무위원이 부서한다. 군사에 관한 것도 또한 같다.', 1, 28);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-13 13:22:00', 2, '모든 국민은 법 앞에 - 3', '의원을 제명하려면 국회재적의원 3분의 2 이상의 찬성이 있어야 한다. 국가안전보장회의의 조직·직무범위 기타 필요한 사항은 법률로 정한다. 국가는 대외무역을 육성하며, 이를 규제·조정할 수 있다.', 61, 163);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-11 14:43:00', 3, '국무총리·국무위원 - 3', '행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 누구든지 체포 또는 구속을 당한 때에는 즉시 변호인의 조력을 받을 권리를 가진다. 다만, 형사피고인이 스스로 변호인을 구할 수 없을 때에는 법률이 정하는 바에 의하여 국가가 변호인을 붙인다.', 17, 328);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-10 09:12:00', 4, '국회는 법률에 저촉 - 3', '훈장등의 영전은 이를 받은 자에게만 효력이 있고, 어떠한 특권도 이에 따르지 아니한다. 국가는 여자의 복지와 권익의 향상을 위하여 노력하여야 한다.', 20, 57);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-07 18:38:00', 5, '탄핵결정은 공직으로 - 3', '사법권은 법관으로 구성된 법원에 속한다. 외국인은 국제법과 조약이 정하는 바에 의하여 그 지위가 보장된다. 국가안전보장회의는 대통령이 주재한다.', 42, 219);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-04 10:35:00', 6, '국가는 과학기술의 혁 - 3', '대통령은 법률에서 구체적으로 범위를 정하여 위임받은 사항과 법률을 집행하기 위하여 필요한 사항에 관하여 대통령령을 발할 수 있다. 국민의 자유와 권리는 헌법에 열거되지 아니한 이유로 경시되지 아니한다.', 138, 729);
+        INSERT INTO article(created_at, writer_id, title, contents, like_cnt, view_cnt) values('2023-02-02 12:53:00', 1, '국가는 법률이 정하는 - 3', '모든 국민은 거주·이전의 자유를 가진다. 행정각부의 장은 국무위원 중에서 국무총리의 제청으로 대통령이 임명한다. 대통령이 제1항의 기간내에 공포나 재의의 요구를 하지 아니한 때에도 그 법률안은 법률로서 확정된다.', 2, 12);
+
+
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 2, 1, '대통령은 법률안의 일부에 대하여 또는 법률안을 수정하여 재의를 요구할 수 없다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 1, 1, '모든 국민은 헌법과 법률이 정한 법관에 의하여 법률에 의한 재판을 받을 권리를 가진다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 3, 1, '감사원의 조직·직무범위·감사위원의 자격·감사대상공무원의 범위 기타 필요한 사항은 법률로 정한다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 5, 1, '대법관의 임기는 6년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 6, 1, '대통령의 임기는 5년으로 하며, 중임할 수 없다. 국가는 농업 및 어업을 보호·육성하기 위하여 농·어촌종합개발과 그 지원등 필요한 계획을 수립·시행하여야 한다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 1, 1, '모든 국민의 재산권은 보장된다. 그 내용과 한계는 법률로 정한다.');
+
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 3, 2, '행정각부의 설치·조직과 직무범위는 법률로 정한다. 대통령의 국법상 행위는 문서로써 하며, 이 문서에는 국무총리와 관계 국무위원이 부서한다. 군사에 관한 것도 또한 같다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 4, 2, '국회의원과 정부는 법률안을 제출할 수 있다. 중앙선거관리위원회는 법령의 범위안에서 선거관리·국민투표관리 또는 정당사무에 관한 규칙을 제정할 수 있으며, 법률에 저촉되지 아니하는 범위안에서 내부규율에 관한 규칙을 제정할 수 있다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 6, 2, '모든 국민은 법률이 정하는 바에 의하여 국방의 의무를 진다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 2, 2, '계엄을 선포한 때에는 대통령은 지체없이 국회에 통고하여야 한다.');
+
+        INSERT INTO reply(created_at, writer_id, article_id, contents)
+        values('2023-03-30 03:12:00', 3, 4, '재판의 심리와 판결은 공개한다. 다만, 심리는 국가의 안전보장 또는 안녕질서를 방해하거나 선량한 풍속을 해할 염려가 있을 때에는 법원의 결정으로 공개하지 아니할 수 있다.');
+        INSERT INTO reply(created_at, writer_id, article_id, contents)
+        values('2023-03-30 03:12:00', 2, 5, '행정각부의 설치·조직과 직무범위는 법률로 정한다. 위원은 정당에 가입하거나 정치에 관여할 수 없다.');
+        INSERT INTO reply(created_at, writer_id, article_id, contents)
+        values('2023-03-30 03:12:00', 3, 5, '환경권의 내용과 행사에 관하여는 법률로 정한다. 모든 국민은 근로의 권리를 가진다. 국가는 사회적·경제적 방법으로 근로자의 고용의 증진과 적정임금의 보장에 노력하여야 하며, 법률이 정하는 바에 의하여 최저임금제를 시행하여야 한다.');
+        INSERT INTO reply(created_at, writer_id, article_id, contents)
+        values('2023-03-30 03:12:00', 3, 5, '공무원인 근로자는 법률이 정하는 자에 한하여 단결권·단체교섭권 및 단체행동권을 가진다.');
+        INSERT INTO reply(created_at, writer_id, article_id, contents)
+        values('2023-03-30 03:12:00', 1, 5, '대법관의 임기는 6년으로 하며, 법률이 정하는 바에 의하여 연임할 수 있다.');
+
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 1, 6, '대통령은 조국의 평화적 통일을 위한 성실한 의무를 진다. 국가는 국민 모두의 생산 및 생활의 기반이 되는 국토의 효율적이고 균형있는 이용·개발과 보전을 위하여 법률이 정하는 바에 의하여 그에 관한 필요한 제한과 의무를 과할 수 있다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 2, 6, '헌법재판소는 법률에 저촉되지 아니하는 범위안에서 심판에 관한 절차, 내부규율과 사무처리에 관한 규칙을 제정할 수 있다.');
+        INSERT INTO reply(created_at, writer_id, article_id,  contents)
+        values('2023-03-30 03:12:00', 5, 6, '대통령은 전시·사변 또는 이에 준하는 국가비상사태에 있어서 병력으로써 군사상의 필요에 응하거나 공공의 안녕질서를 유지할 필요가 있을 때에는 법률이 정하는 바에 의하여 계엄을 선포할 수 있다.');
+    </insert>
+</mapper>
