@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 
 /** Member 정보전달용 객체 */
 public class MemberDto {
+    // 🚨 제한 사항: 정의 되어있는 dto 들은 필드를 변경하지 않아야 합니다
 
     @Getter
     @AllArgsConstructor

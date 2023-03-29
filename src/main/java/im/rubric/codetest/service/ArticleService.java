@@ -23,7 +23,7 @@ public class ArticleService {
      * @return 검색할 대상의 Page 정보
      */
     public Page<ArticleDto.View> findPage(Pageable pageable) {
-        // todo
+        // return null 을 지운 후 구현하면 됩니다
         return null;
     }
 
@@ -33,7 +33,7 @@ public class ArticleService {
      * @return 검색된 대상
      */
     public ArticleDto.Detail findOne(Long id) {
-        // todo
+        // return null 을 지운 후 구현하면 됩니다
         return null;
     }
 
@@ -44,7 +44,7 @@ public class ArticleService {
      * @return 생성된 객체의 정보
      */
     public ArticleDto.Detail create(ArticleDto.Command dto, Long userId) {
-        //todo
+        // return null 을 지운 후 구현하면 됩니다
         return null;
     }
 
@@ -56,7 +56,7 @@ public class ArticleService {
      * @return 수정된 객체의 정보
      */
     public ArticleDto.Detail update(Long id, ArticleDto.Command dto, Long userId) {
-        //todo
+        // return null 을 지운 후 구현하면 됩니다
         return null;
     }
 
@@ -66,7 +66,7 @@ public class ArticleService {
      * @param userId 삭제 요청한 유저의 식별자 정보
      */
     public void delete(Long id, Long userId) {
-        //todo
+        // 여기에 구현하면 됩니다
     }
 
 }
