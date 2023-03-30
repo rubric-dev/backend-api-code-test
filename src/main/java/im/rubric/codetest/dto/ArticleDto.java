@@ -81,7 +81,6 @@ public class ArticleDto {
         private String title;
         /** 게시글 본문 */
         private String contents;
-
     }
 
 }

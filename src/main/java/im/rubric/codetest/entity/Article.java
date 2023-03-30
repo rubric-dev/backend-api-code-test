@@ -1,7 +1,9 @@
 package im.rubric.codetest.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
@@ -14,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 /** 게시글 엔티티 */
@@ -22,6 +25,7 @@ import java.time.LocalDateTime;
 @Entity
 @ToString(of = "id")
 @EqualsAndHashCode(of = "id")
+@NoArgsConstructor
 public class Article {
 
     @Id
@@ -49,4 +53,22 @@ public class Article {
     /** 조회수 */
     private int viewCnt;
 
+
+    public Article(LocalDateTime createdAt, Member member, String title, String contents) {
+        this.createdAt = createdAt;
+        this.writer = member;
+        this.title = title;
+        this.contents =contents;
+        this.likeCnt = 0;
+        this.viewCnt = 0;
+    }
+
+    public boolean equalsMember(Member member) {
+        return Objects.equals(this.writer.getId(), member.getId());
+    }
+
+    public void update(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
 }

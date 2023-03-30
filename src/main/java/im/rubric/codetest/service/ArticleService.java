@@ -2,12 +2,22 @@ package im.rubric.codetest.service;
 
 
 import im.rubric.codetest.dto.ArticleDto;
+import im.rubric.codetest.dto.MemberDto;
+import im.rubric.codetest.dto.ReplyDto;
+import im.rubric.codetest.entity.Article;
+import im.rubric.codetest.entity.Member;
+import im.rubric.codetest.entity.Reply;
 import im.rubric.codetest.repository.jpa.ArticleRepository;
+import im.rubric.codetest.repository.jpa.MemberRepository;
+import im.rubric.codetest.repository.jpa.ReplyRepository;
 import im.rubric.codetest.repository.mybatis.ArticleDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 /** Article 관련 로직을 처리하는 서비스 */
 @Service
@@ -15,12 +25,15 @@ import org.springframework.stereotype.Service;
 public class ArticleService {
 
     private final ArticleRepository articleRepository;
+    private final ReplyRepository replyRepository;
+    private final MemberRepository memberRepository;
     private final ArticleDao articleDao;
 
     /**
-     * 페이지 단위로 검색하는 기능
-     * @param pageable 검색할 페이지의 정보
-     * @return 검색할 대상의 Page 정보
+     페이지 단위로 검색하는 기능
+
+     @param pageable 검색할 페이지의 정보
+     @return 검색할 대상의 Page 정보
      */
     public Page<ArticleDto.View> findPage(Pageable pageable) {
         // return null 을 지운 후 구현하면 됩니다
@@ -28,42 +41,97 @@ public class ArticleService {
     }
 
     /**
-     * 단일 검색을 위한 기능
-     * @param id 검색할 대상의 id
-     * @return 검색된 대상
+     단일 검색을 위한 기능
+
+     @param id 검색할 대상의 id
+     @return 검색된 대상
      */
     public ArticleDto.Detail findOne(Long id) {
         // return null 을 지운 후 구현하면 됩니다
-        return null;
+        Article article = articleRepository.findById(id)
+            .orElseThrow(IllegalArgumentException::new);
+
+        List<Reply> replys = replyRepository.findByArticleOrderByCreatedAtDesc(article)
+            .orElseThrow(IllegalArgumentException::new);
+
+
+        List<ReplyDto.View> view = replys.stream().map(
+            (reply) ->
+                new ReplyDto.View(
+                    reply.getId(),
+                    reply.getCreatedAt(),
+                    new MemberDto.View(
+                        reply.getWriter().getId(),
+                        reply.getWriter().getCreatedAt(),
+                        reply.getWriter().getNickname()
+                    ),
+                    reply.getContents()
+                )
+        ).toList();
+
+        return new ArticleDto.Detail(
+            article.getId(),
+            article.getCreatedAt(),
+            new MemberDto.View(article.getWriter().getId(),
+                article.getWriter().getCreatedAt(),
+                article.getWriter().getNickname()),
+            article.getTitle(),
+            article.getContents(),
+            replys.size(),
+            article.getLikeCnt(),
+            article.getViewCnt(),
+            view
+        );
     }
 
     /**
-     * 객체 생성을 위한 기능
-     * @param dto 생성할 내용을 담은 객체
-     * @param userId 작성자 식별자
-     * @return 생성된 객체의 정보
+     객체 생성을 위한 기능
+
+     @param dto 생성할 내용을 담은 객체
+     @param userId 작성자 식별자
+     @return 생성된 객체의 정보
      */
-    public ArticleDto.Detail create(ArticleDto.Command dto, Long userId) {
+    public void create(ArticleDto.Command dto, Long userId) {
         // return null 을 지운 후 구현하면 됩니다
-        return null;
+        Member member = memberRepository.findById(userId)
+            .orElseThrow(IllegalArgumentException::new);
+
+        Article article = new Article(
+            LocalDateTime.now(),
+            member,
+            dto.getTitle(),
+            dto.getContents()
+        );
+
+        articleRepository.save(article);
     }
 
     /**
-     * 객체 수정을 위한 기능
-     * @param id 수정할 대상의 id
-     * @param dto 수정할 내용을 담은 객체
-     * @param userId 작성자 식별자
-     * @return 수정된 객체의 정보
+     객체 수정을 위한 기능
+
+     @param id 수정할 대상의 id
+     @param dto 수정할 내용을 담은 객체
+     @param userId 작성자 식별자
+     @return 수정된 객체의 정보
      */
-    public ArticleDto.Detail update(Long id, ArticleDto.Command dto, Long userId) {
+    public void update(Long id, ArticleDto.Command dto, Long userId) {
         // return null 을 지운 후 구현하면 됩니다
-        return null;
+        Member member = memberRepository.findById(userId)
+            .orElseThrow(IllegalArgumentException::new);
+
+        Article article = articleRepository.findById(id)
+            .orElseThrow(IllegalArgumentException::new);
+
+        if(article.equalsMember(member)){
+            article.update(dto.getTitle(),dto.getContents());
+        }
     }
 
     /**
-     * 객체 삭제를 위한 기능
-     * @param id 삭제할 대상의 id
-     * @param userId 삭제 요청한 유저의 식별자 정보
+     객체 삭제를 위한 기능
+
+     @param id 삭제할 대상의 id
+     @param userId 삭제 요청한 유저의 식별자 정보
      */
     public void delete(Long id, Long userId) {
         // 여기에 구현하면 됩니다

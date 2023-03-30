@@ -40,6 +40,7 @@ public class ArticleController {
     @GetMapping
     public PageResponse<ArticleDto.View> page(@PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         Page<ArticleDto.View> articles = articleService.findPage(pageable);
+
         return new PageResponse<>(articles, pageable);
     }
 
@@ -54,6 +55,7 @@ public class ArticleController {
     @GetMapping("/{id}")
     public CommonResponse<ArticleDto.Detail> detail(@PathVariable Long id) {
         ArticleDto.Detail article = articleService.findOne(id);
+
         return new CommonResponse<>(article);
     }
 

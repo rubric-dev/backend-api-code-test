@@ -1,8 +1,13 @@
 package im.rubric.codetest.repository.jpa;
 
+import im.rubric.codetest.entity.Article;
 import im.rubric.codetest.entity.Reply;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+import java.util.Optional;
+
 /** Reply 관련 기능을 처리하는 JPA repository */
 public interface ReplyRepository extends JpaRepository<Reply, Long> {
+    Optional<List<Reply>> findByArticleOrderByCreatedAtDesc(Article article);
 }
