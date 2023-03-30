@@ -29,7 +29,7 @@ public class ArticleController {
     private final ArticleService articleService;
 
 
-    /**  📌 여러개의 게시글을 page 단위로 조회하기 위한 api
+    /*  📌 여러개의 게시글을 page 단위로 조회하기 위한 api
      *
      * 요구사항 1. page 단위로 조회되어야 합니다.
      * 요구사항 2. 게시글들에 달려있는 댓글 갯수의 정보를 포함하여 조회되어야 합니다.
@@ -44,7 +44,7 @@ public class ArticleController {
     }
 
 
-    /**  📌 하나의 게시글을 조회하기 위한 api
+    /*  📌 하나의 게시글을 조회하기 위한 api
      *
      * 요구사항 1. 해당 게시글의 가장 최신 댓글 3개와 함께 조회되어야 합니다.
      *
@@ -58,7 +58,7 @@ public class ArticleController {
     }
 
 
-    /**  📌 새로운 게시글을 생성하기 위한 api
+    /*  📌 새로운 게시글을 생성하기 위한 api
      *
      * 요구사항 1. 제목과 내용이 비어있는 상태로 게시글 작성이 불가합니다.
      *
@@ -73,7 +73,7 @@ public class ArticleController {
     }
 
 
-    /**  📌 게시글 수정을 위한 api
+    /*  📌 게시글 수정을 위한 api
      *
      * 요구사항 1. 게시글을 수정은 작성자 본인만 수정이 가능합니다.
      *
@@ -89,7 +89,7 @@ public class ArticleController {
     }
 
 
-    /**  📌 게시글 삭제를 위한 api
+    /*  📌 게시글 삭제를 위한 api
      *
      * 요구사항 1. 게시글을 삭제는 작성자 본인만 삭제가 가능합니다.
      *
@@ -104,7 +104,7 @@ public class ArticleController {
     }
 
 
-    /**  📌 추가 문제 (SQL문 작성)
+    /*  📌 추가 문제 (SQL문 작성)
 
      인기 있는 글을 많이 작성하는 작성자들의 순위가 필요합니다.
      작성자들이 작성한 게시글 인기도의 평균을 내림차순으로 조회하는 쿼리를 작성해 주세요.
