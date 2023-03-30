@@ -45,7 +45,7 @@ public class ArticleService {
      */
     public ArticleDto.Detail create(ArticleDto.Command dto, Long userId) {
         // return null 을 지운 후 구현하면 됩니다
-        return null;
+        return articleDao.create(dto, userId);
     }
 
     /**
@@ -57,7 +57,7 @@ public class ArticleService {
      */
     public ArticleDto.Detail update(Long id, ArticleDto.Command dto, Long userId) {
         // return null 을 지운 후 구현하면 됩니다
-        return null;
+        return articleDao.update(id, dto, userId);
     }
 
     /**

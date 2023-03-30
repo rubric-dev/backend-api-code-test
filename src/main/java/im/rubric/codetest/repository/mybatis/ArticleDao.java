@@ -1,5 +1,6 @@
 package im.rubric.codetest.repository.mybatis;
 
+import im.rubric.codetest.dto.ArticleDto;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -8,4 +9,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ArticleDao {
+    ArticleDto.Detail create(ArticleDto.Command dto, Long userId);
+
+    ArticleDto.Detail update(Long id, ArticleDto.Command dto, Long userId);
 }

@@ -111,6 +111,8 @@ public class ArticleController {
      ※ 게시글 인기도 계산식 = (조회수 * 1.5) + (좋아요수 * 5) + (댓글수 * 9)
 
      ------------------  작성  ------------------
+     select id from article
+
 
 
 
