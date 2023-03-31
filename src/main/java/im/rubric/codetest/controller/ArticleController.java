@@ -1,14 +1,18 @@
 package im.rubric.codetest.controller;
 
+import im.rubric.codetest.config.ResponseMessage;
 import im.rubric.codetest.dto.ArticleDto;
 import im.rubric.codetest.dto.io.CommonResponse;
 import im.rubric.codetest.dto.io.PageResponse;
+import im.rubric.codetest.entity.Article;
 import im.rubric.codetest.service.ArticleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +22,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Optional;
 
 /**
  * Article 관련 api를 처리하는 rest controller
@@ -52,9 +58,9 @@ public class ArticleController {
      * @return dto로 변환 된 대상 정보. 대상이 조회되지 않을 시 exception.
      */
     @GetMapping("/{id}")
-    public CommonResponse<ArticleDto.Detail> detail(@PathVariable Long id) {
-        ArticleDto.Detail article = articleService.findOne(id);
-        return new CommonResponse<>(article);
+    public ResponseEntity<ResponseMessage> detail(@PathVariable Long id) {
+        Optional<Article> article = articleService.findOne(id);
+        return new ResponseEntity<>(new ResponseMessage("조회완료",200,article),HttpStatus.OK);
     }
 
 
@@ -67,9 +73,9 @@ public class ArticleController {
      * @return 성공 시 기본 응답형. 실패 시 exception.
      */
     @PostMapping
-    public CommonResponse create(@RequestBody ArticleDto.Command dto, @AuthenticationPrincipal Long userId) {
-        articleService.create(dto, userId);
-        return CommonResponse.OK;
+    public ResponseEntity<ResponseMessage> create(@RequestBody ArticleDto.Command dto, @AuthenticationPrincipal Long userId) {
+        Article post = articleService.create(dto, userId);
+        return new ResponseEntity<>(new ResponseMessage("게시글 등록 완료",200,post),HttpStatus.OK);
     }
 
 
@@ -83,9 +89,9 @@ public class ArticleController {
      * @return 성공 시 기본 응답형. 실패 시 exception.
      */
     @PutMapping("/{id}")
-    public CommonResponse update(@PathVariable Long id, @RequestBody ArticleDto.Command dto, @AuthenticationPrincipal Long userId) {
-        articleService.update(id, dto, userId);
-        return CommonResponse.OK;
+    public ResponseEntity<ResponseMessage> update(@PathVariable Long id, @RequestBody ArticleDto.Command dto, @AuthenticationPrincipal Long userId) {
+        Optional<Article> updatePost = articleService.update(id, dto, userId);
+        return new ResponseEntity<>(new ResponseMessage("수정완료",200,updatePost),HttpStatus.OK);
     }
 
 
@@ -98,9 +104,9 @@ public class ArticleController {
      * @return 성공 시 기본 응답형. 실패 시 exception.
      */
     @DeleteMapping("/{id}")
-    public CommonResponse delete(@PathVariable Long id, @AuthenticationPrincipal Long userId) {
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Long id, @AuthenticationPrincipal Long userId) {
         articleService.delete(id, userId);
-        return CommonResponse.OK;
+        return new ResponseEntity<>(new ResponseMessage("삭제완료",200,null), HttpStatus.OK);
     }
 
 

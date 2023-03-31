@@ -1,5 +1,6 @@
 package im.rubric.codetest.entity;
 
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,4 +50,21 @@ public class Article {
     /** 조회수 */
     private int viewCnt;
 
+    @Builder
+    public Article(LocalDateTime createdAt, Member writer, String title, String contents, int likeCnt, int viewCnt) {
+        this.createdAt = createdAt;
+        this.writer = writer;
+        this.title = title;
+        this.contents = contents;
+        this.likeCnt = likeCnt;
+        this.viewCnt = viewCnt;
+    }
+
+    public void changeTitle(String title) {
+        this.title = title;
+    }
+
+    public void changeContents(String contents) {
+        this.contents = contents;
+    }
 }
