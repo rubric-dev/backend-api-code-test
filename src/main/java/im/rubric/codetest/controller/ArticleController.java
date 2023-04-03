@@ -54,6 +54,7 @@ public class ArticleController {
     @GetMapping("/{id}")
     public CommonResponse<ArticleDto.Detail> detail(@PathVariable Long id) {
         ArticleDto.Detail article = articleService.findOne(id);
+
         return new CommonResponse<>(article);
     }
 

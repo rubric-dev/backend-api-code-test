@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class CustomExceptionHandler {
 
     /** 공통 exception 처리 */
-    @ExceptionHandler(Exception.class)
+    @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse unexpectedException(Exception e) {
         e.printStackTrace();
         return new ErrorResponse(HttpStatus.INTERNAL_SERVER_ERROR, e.getClass().getSimpleName(), "Server error occurred (" + e.getMessage() + ")");
     }
+
 }

@@ -1,5 +1,6 @@
 package im.rubric.codetest.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,4 +50,12 @@ public class Article {
     /** 조회수 */
     private int viewCnt;
 
+    public void upView(){
+        this.viewCnt = this.viewCnt++;
+    }
+    public Article(String title, String contents, Member member){
+        this.title = title;
+        this.contents = contents;
+        this.writer = member;
+    }
 }

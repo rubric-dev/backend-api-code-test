@@ -24,5 +24,11 @@ public class MemberDto {
 
         /** 닉네임 */
         private String nickname;
+
+        public View(Member member){
+            this.id = member.getId();
+            this.nickname = member.getNickname();
+            this.createdAt = member.getCreatedAt();
+        }
     }
 }
