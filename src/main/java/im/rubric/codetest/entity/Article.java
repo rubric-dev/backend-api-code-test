@@ -49,4 +49,28 @@ public class Article {
     /** 조회수 */
     private int viewCnt;
 
+    protected Article() {
+    }
+
+    private Article(Member writer, String title, String contents, int likeCnt, int viewCnt) {
+        this.writer = writer;
+        this.title = title;
+        this.contents = contents;
+        this.likeCnt = likeCnt;
+        this.viewCnt = viewCnt;
+    }
+
+    public static Article newInstance(Member writer, String title, String contents) {
+        validate(title, contents);
+        return new Article(writer, title, contents, 0, 0);
+    }
+
+    private static void validate(String title, String contents) {
+        if (title.isBlank()) {
+            throw new RuntimeException("게시글의 제목은 비어있을 수 없습니다.");
+        }
+        if (contents.isBlank()) {
+            throw new RuntimeException("게시글의 내용은 비어있을 수 없습니다.");
+        }
+    }
 }

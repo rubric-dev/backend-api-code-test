@@ -1,5 +1,6 @@
 package im.rubric.codetest.dto;
 
+import im.rubric.codetest.entity.Reply;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -23,6 +24,10 @@ public class ReplyDto {
 
         /** 댓글 내용 */
         private String contents;
+
+        public static View newInstance(Reply reply) {
+            return new View(reply.getId(), reply.getCreatedAt(), MemberDto.View.newInstance(reply.getWriter()), reply.getContents());
+        }
 
     }
 }

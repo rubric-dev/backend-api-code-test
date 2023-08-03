@@ -24,5 +24,9 @@ public class MemberDto {
 
         /** 닉네임 */
         private String nickname;
+
+        public static View newInstance(Member writer) {
+            return new MemberDto.View(writer.getId(), writer.getCreatedAt(), writer.getNickname());
+        }
     }
 }
