@@ -1,11 +1,24 @@
 package im.rubric.codetest.service;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import im.rubric.codetest.dto.ArticleDto;
+import im.rubric.codetest.dto.MemberDto;
+import im.rubric.codetest.dto.ReplyDto;
+import im.rubric.codetest.entity.Article;
+import im.rubric.codetest.entity.Member;
+import im.rubric.codetest.entity.Reply;
 import im.rubric.codetest.repository.jpa.ArticleRepository;
+import im.rubric.codetest.repository.jpa.MemberRepository;
+import im.rubric.codetest.repository.jpa.ReplyRepository;
 import im.rubric.codetest.repository.mybatis.ArticleDao;
+import im.rubric.codetest.repository.mybatis.MemberDao;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +28,8 @@ import org.springframework.stereotype.Service;
 public class ArticleService {
 
     private final ArticleRepository articleRepository;
+    private final ReplyRepository replyRepository;
+    private final MemberRepository memberRepository;
     private final ArticleDao articleDao;
 
     /**
@@ -24,6 +39,9 @@ public class ArticleService {
      */
     public Page<ArticleDto.View> findPage(Pageable pageable) {
         // return null 을 지운 후 구현하면 됩니다
+        Page<Article> articles = articleRepository.findAll(pageable);
+
+
         return null;
     }
 
@@ -33,8 +51,20 @@ public class ArticleService {
      * @return 검색된 대상
      */
     public ArticleDto.Detail findOne(Long id) {
-        // return null 을 지운 후 구현하면 됩니다
-        return null;
+        Optional<Article> byId = articleRepository.findById(id);
+        Article finded = byId.get();
+        Member member = finded.getWriter();
+        PageRequest pageRequest = PageRequest.of(0, 3);
+
+        Page<Reply> all = replyRepository.findAll(pageRequest);
+        List<ReplyDto.View> replies = new ArrayList<>();
+
+        int replyCnt = 0;
+
+        ArticleDto.Detail detail = new ArticleDto.Detail(finded.getId(), finded.getCreatedAt(), new MemberDto.View(member.getId(), member.getCreatedAt(), member.getNickname() ), finded.getTitle(),
+            finded.getContents(),replyCnt, finded.getViewCnt(), finded.getLikeCnt(), replies);
+        //Article finded = byId.orElseThrow( () -> return new Exception("error") );
+        return detail;
     }
 
     /**
